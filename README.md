@@ -1,146 +1,84 @@
 
-# **Terraform Docker Container Provisioning**
+# Terraform Docker Container Provisioning
 
-This repository demonstrates how to provision a local Docker container using **Terraform**, running an **Nginx** web server. It showcases Infrastructure as Code (IaC) principles for automated, consistent, and scalable container deployment.
-
----
-
-## **📚 Table of Contents**
-
-- [Project Overview](#project-overview)  
-- [Requirements](#requirements)  
-- [Setup Instructions](#setup-instructions)  
-- [Usage](#usage)  
-- [Destroying Resources](#destroying-resources)  
-- [Troubleshooting](#troubleshooting)  
-- [Contributing](#contributing)  
-- [License](#license)  
-- [Acknowledgements](#acknowledgements)  
+This repository demonstrates how to provision a local Docker container using **Terraform**. It includes configuration files and automation workflows to streamline container provisioning.
 
 ---
 
-## **📌 Project Overview**
+## Features
 
-This project uses **Terraform** to automate the provisioning of a local **Docker** container running the **Nginx** web server. By leveraging Terraform, infrastructure becomes reproducible and manageable — a core practice in DevOps.
-
----
-
-## **✅ Requirements**
-
-Ensure the following tools are installed:
-
-- [Terraform](https://www.terraform.io/downloads.html) (v0.12 or later)  
-- [Docker](https://docs.docker.com/get-docker/) (running locally)  
-- Internet connection to fetch Terraform provider plugins  
+- Provision Docker container locally using Terraform
+- Automate infrastructure as code (IaC)
+- Minimal configuration, easy to replicate
+- GitHub Actions support (optional)
 
 ---
 
-## **⚙️ Setup Instructions**
+## Project Structure
 
-1. **Clone the Repository**  
+```
+.
+├── main.tf                          # Terraform configuration file
+├── terraform.tfstate               # Terraform state file
+├── terraform.tfstate.backup       # Terraform backup state
+├── .terraform.lock.hcl            # Terraform dependency lock file
+├── .terraform/                    # Terraform plugin and modules directory
+├── .github/
+│   └── workflows/
+│       └── terraform.yml          # GitHub Actions workflow for CI/CD (optional)
+└── README.md                      # Project documentation
+```
+
+---
+
+## Terraform Workflow Stages
+
+1. **Initialize Terraform** – Set up Terraform working directory and download required providers  
+2. **Plan Infrastructure** – Preview actions Terraform will take to achieve desired state  
+3. **Apply Configuration** – Create Docker container using defined resources  
+4. **Verify** – Confirm Docker container is running locally  
+
+---
+
+## Prerequisites
+
+- Terraform installed on your system  
+- Docker installed and running locally  
+- GitHub account (if using Actions for CI/CD)
+
+---
+
+## Getting Started
+
+1. Clone this repository:
    ```bash
    git clone https://github.com/Bsrikanth008/Local-Docker-container-using-Terraform.git
    cd Local-Docker-container-using-Terraform
    ```
 
-2. **Initialize Terraform**  
+2. Initialize Terraform:
    ```bash
    terraform init
    ```
 
-3. **Plan the Configuration (Optional but Recommended)**  
+3. Review the plan:
    ```bash
    terraform plan
    ```
 
-4. **Apply the Configuration**  
+4. Apply the configuration:
    ```bash
    terraform apply
    ```
-   Type `yes` when prompted to proceed.
-
-5. **Verify Docker Container**  
-   ```bash
-   docker ps
-   ```
-   Open your browser and visit: [http://localhost:9090](http://localhost:9090)
 
 ---
 
-## **▶️ Usage**
-
-- **Start Container (if stopped):**  
-  ```bash
-  docker start my-nginx-container
-  ```
-
-- **Stop Container:**  
-  ```bash
-  docker stop my-nginx-container
-  ```
-
-- **Access Web Server:**  
-  Navigate to: [http://localhost:9090](http://localhost:9090)
-
----
-
-## **🧹 Destroying Resources**
-
-To clean up all Terraform-managed resources:
-
-```bash
-terraform destroy
-```
-Type `yes` to confirm.
-
----
-
-## **🛠 Troubleshooting**
-
-- **Reinitialize Terraform:**  
-  ```bash
-  terraform init -reconfigure
-  ```
-
-- **Check Docker Status:**  
-  ```bash
-  docker info
-  ```
-
-- **Permission Issues (Linux):**  
-  Run with elevated permissions:  
-  ```bash
-  sudo terraform apply
-  ```
-
-- **Manual Cleanup (if needed):**  
-  ```bash
-  docker stop my-nginx-container
-  docker rm my-nginx-container
-  ```
-
----
-
-## **🤝 Contributing**
-
-Contributions are welcome! To contribute:
-
-1. Fork the repository  
-2. Create a feature branch  
-3. Commit your changes  
-4. Open a pull request  
-
----
 ## Author
 
-Created as part of the **Elevate Labs DevOps Internship** by Srikanth Berla.
+Created as part of the **Elevate Labs DevOps Internship** by [Srikanth Berla](https://www.linkedin.com/in/srikanth-berla-9bb743266)
+
+---
 
 ## License
 
 This project is intended for educational purposes.
-
-## **🙏 Acknowledgements**
-
-- [Terraform](https://www.terraform.io/)  
-- [Docker](https://www.docker.com/)  
-- [Nginx](https://www.nginx.com/)
