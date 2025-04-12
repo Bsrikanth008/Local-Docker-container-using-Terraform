@@ -134,13 +134,10 @@ Contributions are welcome! To contribute:
 ## Author
 
 Created as part of the **Elevate Labs DevOps Internship** by Srikanth Berla.
----
 
 ## License
 
 This project is intended for educational purposes.
-
----
 
 ## **🙏 Acknowledgements**
 
