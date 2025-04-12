@@ -1,197 +1,149 @@
-Terraform Docker Container Provisioning
 
-This repository demonstrates how to use *Terraform* to provision a *Docker container* locally, running the *Nginx* web server. The project leverages *Infrastructure as Code (IaC)* to automate the setup and management of Docker containers.
+# **Terraform Docker Container Provisioning**
 
-## 📑 Table of Contents
-
-- [Project Overview](#project-overview)
-- [Requirements](#requirements)
-- [Setup Instructions](#setup-instructions)
-- [Usage](#usage)
-- [Destroying Resources](#destroying-resources)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [License](#license)
+This repository demonstrates how to provision a local Docker container using **Terraform**, running an **Nginx** web server. It showcases Infrastructure as Code (IaC) principles for automated, consistent, and scalable container deployment.
 
 ---
 
-## 📝 Project Overview
+## **📚 Table of Contents**
 
-This project demonstrates how to automate the provisioning of a Docker container using *Terraform. The container runs the **Nginx* web server, and it can be easily scaled and managed with Terraform scripts.
-
-By using Terraform, we make the process of setting up Docker containers reproducible and maintainable, which is essential for DevOps workflows.
-
----
-
-## 🖥 Requirements
-
-Before you begin, ensure you have the following installed:
-
-- *Terraform* (v0.12 or later)
-- *Docker* (installed and running locally)
-- A working *internet connection* for Terraform to fetch necessary plugins.
-
-### Install Terraform
-
-To install Terraform, visit the official download page:  
-[Terraform Downloads](https://www.terraform.io/downloads.html)
-
-Follow the installation instructions for your operating system.
-
-### Install Docker
-
-To install Docker, visit the official Docker installation page:  
-[Install Docker](https://docs.docker.com/get-docker/)
-
-Make sure Docker is running before proceeding.
+- [Project Overview](#project-overview)  
+- [Requirements](#requirements)  
+- [Setup Instructions](#setup-instructions)  
+- [Usage](#usage)  
+- [Destroying Resources](#destroying-resources)  
+- [Troubleshooting](#troubleshooting)  
+- [Contributing](#contributing)  
+- [License](#license)  
+- [Acknowledgements](#acknowledgements)  
 
 ---
 
-## ⚙ Setup Instructions
+## **📌 Project Overview**
 
-### 1. Clone the Repository
+This project uses **Terraform** to automate the provisioning of a local **Docker** container running the **Nginx** web server. By leveraging Terraform, infrastructure becomes reproducible and manageable — a core practice in DevOps.
 
-First, clone the repository to your local machine:
+---
+
+## **✅ Requirements**
+
+Ensure the following tools are installed:
+
+- [Terraform](https://www.terraform.io/downloads.html) (v0.12 or later)  
+- [Docker](https://docs.docker.com/get-docker/) (running locally)  
+- Internet connection to fetch Terraform provider plugins  
+
+---
+
+## **⚙️ Setup Instructions**
+
+1. **Clone the Repository**  
+   ```bash
+   git clone https://github.com/Bsrikanth008/Local-Docker-container-using-Terraform.git
+   cd Local-Docker-container-using-Terraform
+   ```
+
+2. **Initialize Terraform**  
+   ```bash
+   terraform init
+   ```
+
+3. **Plan the Configuration (Optional but Recommended)**  
+   ```bash
+   terraform plan
+   ```
+
+4. **Apply the Configuration**  
+   ```bash
+   terraform apply
+   ```
+   Type `yes` when prompted to proceed.
+
+5. **Verify Docker Container**  
+   ```bash
+   docker ps
+   ```
+   Open your browser and visit: [http://localhost:9090](http://localhost:9090)
+
+---
+
+## **▶️ Usage**
+
+- **Start Container (if stopped):**  
+  ```bash
+  docker start my-nginx-container
+  ```
+
+- **Stop Container:**  
+  ```bash
+  docker stop my-nginx-container
+  ```
+
+- **Access Web Server:**  
+  Navigate to: [http://localhost:9090](http://localhost:9090)
+
+---
+
+## **🧹 Destroying Resources**
+
+To clean up all Terraform-managed resources:
 
 ```bash
-git clone https://github.com/Bsrikanth008/Local-Docker-container-using-Terraform.git
-cd terraform-docker-provisioning
-
-2. Initialize Terraform
-
-Terraform needs to initialize the working directory and download the necessary provider plugins (such as Docker). Run:
-
-terraform init
-
-3. Apply the Configuration
-
-Now, provision the Docker container by applying the Terraform configuration:
-
-terraform apply
-
-You will be prompted to confirm the action. Type yes to continue.
-
-4. Verify the Docker Container
-
-After Terraform has successfully created the container, check that it's running by using the following Docker command:
-
-docker ps
-
-You should see the Nginx container running. You can access the Nginx web server by visiting:
-
-http://localhost:9090
-
-
----
-
-🔧 Usage
-
-Start the Container
-
-After provisioning, you can start the Docker container manually:
-
-docker start my-nginx-container
-
-Stop the Container
-
-To stop the Docker container manually:
-
-docker stop my-nginx-container
-
-Access the Container
-
-Once the container is running, you can access it through a browser:
-
-http://localhost:9090
-
-
----
-
-🛑 Destroying Resources
-
-To remove the Docker container and clean up all the resources created by Terraform, run the following command:
-
 terraform destroy
-
-You will be prompted to confirm the destruction of the resources. Type yes to proceed.
-
-
----
-
-⚠ Troubleshooting
-
-If you encounter issues during provisioning or destruction, try the following:
-
-1. Reinitialize Terraform
-
-Sometimes Terraform requires reinitialization to download or update the provider plugins:
-
-terraform init -reconfigure
-
-2. Check Docker Status
-
-Ensure Docker is running on your machine:
-
-docker info
-
-3. Permissions Issues
-
-If you're on Linux and facing permission issues, run Terraform with sudo:
-
-sudo terraform apply
-
-4. Manual Cleanup
-
-If the container doesn't destroy automatically, remove it manually:
-
-docker stop my-nginx-container
-docker rm my-nginx-container
-
+```
+Type `yes` to confirm.
 
 ---
 
-🤝 Contributing
+## **🛠 Troubleshooting**
 
-Feel free to contribute to this project! Whether it's reporting bugs, suggesting new features, or improving the documentation, contributions are welcome.
+- **Reinitialize Terraform:**  
+  ```bash
+  terraform init -reconfigure
+  ```
 
-How to Contribute:
+- **Check Docker Status:**  
+  ```bash
+  docker info
+  ```
 
-1. Fork the repository.
+- **Permission Issues (Linux):**  
+  Run with elevated permissions:  
+  ```bash
+  sudo terraform apply
+  ```
 
-
-2. Clone your fork:
-
-git clone https://github.com/Bsrikanth008/Local-Docker-container-using-Terraform.git
-
-
-3. Create a new branch for your changes:
-
-git checkout -b feature/your-feature
-
-
-4. Make your changes and commit:
-
-git commit -m 'Add your feature'
-
-
-5. Push your changes:
-
-git push origin feature/your-feature
-
-
-6. Create a pull request to the main repository.
-
-
-
+- **Manual Cleanup (if needed):**  
+  ```bash
+  docker stop my-nginx-container
+  docker rm my-nginx-container
+  ```
 
 ---
-📄 License
+
+## **🤝 Contributing**
+
+Contributions are welcome! To contribute:
+
+1. Fork the repository  
+2. Create a feature branch  
+3. Commit your changes  
+4. Open a pull request  
+
+---
+## Author
+
+Created as part of the **Elevate Labs DevOps Internship** by Srikanth Berla.
 ---
 
-🙏 Acknowledgements
+## License
 
-Terraform
+This project is intended for educational purposes.
 
-Docker
+---
 
-Nginx
+## **🙏 Acknowledgements**
+
+- [Terraform](https://www.terraform.io/)  
+- [Docker](https://www.docker.com/)  
+- [Nginx](https://www.nginx.com/)
